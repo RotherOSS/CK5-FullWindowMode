@@ -9,8 +9,8 @@
   <Description Lang="en">Adds a Fullscreen mode for the text editor.</Description>
   <Description Lang="de">Fügt eine Fullscreen Ansicht für den Text Editor hinzu.</Description>
   <Filelist>
-    <File Permission="660" Location="var/httpd/htdocs/common/thirdparty/ckeditor5-46.0.0-content.css" />
-    <File Permission="660" Location="var/httpd/htdocs/common/thirdparty/ckeditor5-46.0.0-editor.css" />
+    <File Permission="660" Location="var/httpd/htdocs/common/css/ckeditor5-46.0.0-content.css" />
+    <File Permission="660" Location="var/httpd/htdocs/common/css/ckeditor5-46.0.0-editor.css" />
     <File Permission="660" Location="var/httpd/htdocs/js/thirdparty/ckeditor5-46.0.0/ckeditor5.umd.js.map" />
     <File Permission="660" Location="var/httpd/htdocs/js/thirdparty/ckeditor5-46.0.0/ckeditor5.umd.js" />
     <File Permission="660" Location="var/httpd/htdocs/js/thirdparty/ckeditor5-46.0.0/LICENSE.md" />

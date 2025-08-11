@@ -236,5 +236,6 @@
     <File Permission="660" Location="var/httpd/htdocs/js/thirdparty/ckeditor5-46.0.0/translations/pt-br.umd.js" />
     <File Permission="660" Location="var/httpd/htdocs/js/thirdparty/ckeditor5-46.0.0/translations/ku.js" />
     <File Permission="660" Location="Kernel/Config/Files/XML/CK5FullWindowMode.xml" />
+    <File Permission="660" Location="Custom/Kernel/Output/HTML/Layout.pm" />
   </Filelist>
 </otobo_package>

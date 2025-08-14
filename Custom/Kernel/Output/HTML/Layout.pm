@@ -6453,6 +6453,7 @@ sub SetRichTextParameters {
 #            'sourceEditing', 'specialCharacters', '|',
 #            'fontFamily',    'fontSize',          '|', 'codeBlock'
 #        );
+#
 #        @ToolbarWithoutImage = (
 #            'heading',        'bold',              'italic', 'underline', 'strikethrough', '|',
 #            'bulletedList',   'numberedList',      '|',
@@ -6463,26 +6464,40 @@ sub SetRichTextParameters {
 #            'fontFamily',     'fontSize',          '|', 'codeBlock'
 #        );
 
-        @Toolbar = (
-            'heading',       'bold',              'italic', 'underline', 'strikethrough', '|',
-            'bulletedList',  'numberedList',      '|',
-            'insertTable',   '|',                 'indent',     'outdent', 'alignment', '|',
-            'link',          'undo',              'redo',       '|',
-            'insertImage',   'horizontalLine',    'blockQuote', '|', 'findAndReplace', 'fontColor', 'fontBackgroundColor', 'removeFormat', '|',
-            'sourceEditing', 'specialCharacters', '|',
-            'fontFamily',    'fontSize',          '|', 'codeBlock', '|', 'fullscreen'
-        );
+        my $ToolbarConfig = $ConfigObject->Get('Frontend::EnhancedCKEditorToolbar');
 
-        @ToolbarWithoutImage = (
-            'heading',        'bold',              'italic', 'underline', 'strikethrough', '|',
-            'bulletedList',   'numberedList',      '|',
-            'insertTable',    '|',                 'indent', 'outdent', 'alignment', '|',
-            'link',           'undo',              'redo',   '|',
-            'horizontalLine', 'blockQuote',        '|',      'findAndReplace', 'fontColor', 'fontBackgroundColor', 'removeFormat', '|',
-            'sourceEditing',  'specialCharacters', '|',
-            'fontFamily',     'fontSize',          '|', 'codeBlock', '|', 'fullscreen'
-        );
+        if ( IsArrayRefWithData($ToolbarConfig) ) {
+
+            for my $ToolbarGroup (@{$ToolbarConfig}) {
+
+                if ( IsArrayRefWithData($ToolbarGroup) ) {
+                    push @Toolbar, @{$ToolbarGroup};
+                    push @Toolbar, '|';
+                }
+                else {
+                    $Kernel::OM->Get('Kernel::System::Log')->Log(
+                        Priority => 'error',
+                        Message  => "Invalid ToolbarGroup in Frontend::EnhancedCKEditorToolbar: $ToolbarGroup",
+                    );
+                }
+
+            }
+            
+            pop @Toolbar if ($Toolbar[-1] eq '|');
+
+            @ToolbarWithoutImage = grep { $_ ne 'insertImage' } @Toolbar;
+
+        } else {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => "Invalid Frontend::EnhancedCKEditorToolbar configuration, expected an array reference with toolbar groups.",
+            );
+            @Toolbar = ();
+            @ToolbarWithoutImage = ();
+        }  
+        
 # EO CK5FullWindowMode
+
     }
     else {
         @Toolbar = (
@@ -6553,14 +6568,9 @@ sub SetRichTextParameters {
 #        'Strikethrough', 'Table', 'TableCellProperties', 'TableColumnResize', 'TableProperties', 'TableToolbar', 'Underline', 'Undo', 'PasteFromOffice'
 #    );
 
-    my @Plugins = (
-        'Alignment',    'Autoformat', 'BlockQuote', 'Bold', 'CodeBlock', 'DataFilter', 'DataSchema', 'FindAndReplace', 'FontColor',
-        'FontFamily',   'FontSize',   'FontBackgroundColor', 'GeneralHtmlSupport', 'Heading', 'HorizontalLine', 'Image', 'ImageResize', 'ImageStyle', 'ImageUpload',
-        'ImageToolbar', 'ImageInsert',
-        'Indent',       'Italic', 'Link', 'List', 'Paragraph', 'RemoveFormat', 'SelectAll', 'SimpleUploadAdapter', 'SourceEditing', 'SpecialCharacters',
-        'SpecialCharactersEssentials',
-        'Strikethrough', 'Table', 'TableCellProperties', 'TableColumnResize', 'TableProperties', 'TableToolbar', 'Underline', 'Undo', 'PasteFromOffice', 'Fullscreen'
-    );
+    my $PluginConfig = $ConfigObject->Get('Frontend::CKEditorPlugins');
+    my @Plugins = IsArrayRefWithData($PluginConfig) ? @{$PluginConfig} : ();
+
 # EO CK5FullWindowMode
 
     # set data with AddJSData()
@@ -6629,6 +6639,7 @@ sub CustomerSetRichTextParameters {
     # Declare different toolbars. These declarations will be used in JavaScript.
     my ( @Toolbar, @ToolbarWithoutImage, @ToolbarMidi, @ToolbarMini );
     if ( $ConfigObject->Get('Frontend::RichText::EnhancedMode::Customer') == 1 ) {
+
 # RotherOSS / Ck5FullWindowMode
 #        @Toolbar = (
 #            'heading',       'bold',              'italic',     'underline', 'strikethrough', '|', 'bulletedList', 'numberedList', '|',
@@ -6648,23 +6659,38 @@ sub CustomerSetRichTextParameters {
 #            'fontFamily',     'fontSize',          '|', 'codeBlock'
 #        );
 
-        @Toolbar = (
-            'heading',       'bold',              'italic',     'underline', 'strikethrough', '|', 'bulletedList', 'numberedList', '|',
-            'insertTable',   '|',                 'indent',     'outdent',   'alignment',     '|',
-            'link',          'undo',              'redo',       'selectAll', '-',
-            'insertImage',   'horizontalLine',    'blockQuote', '|',         'findAndReplace', 'fontColor', 'fontBackgroundColor', 'removeFormat', '|',
-            'sourceEditing', 'specialCharacters', '-',
-            'fontFamily',    'fontSize',          '|', 'codeBlock', '|', 'fullscreen'
-        );
+        my $ToolbarConfig = $ConfigObject->Get('Frontend::EnhancedCKEditorToolbar');
 
-        @ToolbarWithoutImage = (
-            'heading',        'bold',              'italic', 'underline',      'strikethrough', '|', 'bulletedList', 'numberedList', '|',
-            'insertTable',    '|',                 'indent', 'outdent',        'alignment',     '|',
-            'link',           'undo',              'redo',   'selectAll',      '-',
-            'horizontalLine', 'blockQuote',        '|',      'findAndReplace', 'fontColor', 'fontBackgroundColor', 'removeFormat', '|',
-            'sourceEditing',  'specialCharacters', '-',
-            'fontFamily',     'fontSize',          '|', 'codeBlock', '|', 'fullscreen'
-        );
+        if ( IsArrayRefWithData($ToolbarConfig) ) {
+
+            for my $ToolbarGroup (@{$ToolbarConfig}) {
+
+                if ( IsArrayRefWithData($ToolbarGroup) ) {
+                    push @Toolbar, @{$ToolbarGroup};
+                    push @Toolbar, '|';
+                }
+                else {
+                    $Kernel::OM->Get('Kernel::System::Log')->Log(
+                        Priority => 'error',
+                        Message  => "Invalid ToolbarGroup in Frontend::EnhancedCKEditorToolbar: $ToolbarGroup",
+                    );
+                }
+
+            }
+            
+            pop @Toolbar if ($Toolbar[-1] eq '|');
+
+            @ToolbarWithoutImage = grep { $_ ne 'insertImage' } @Toolbar;
+
+        } else {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => "Invalid Frontend::EnhancedCKEditorToolbar configuration, expected an array reference with toolbar groups.",
+            );
+            @Toolbar = ();
+            @ToolbarWithoutImage = ();
+        }  
+
 # EO CK5FullWindowMode
 
         @ToolbarMidi = (
@@ -6758,14 +6784,9 @@ sub CustomerSetRichTextParameters {
 #        'Strikethrough', 'Table', 'TableCellProperties', 'TableColumnResize', 'TableProperties', 'TableToolbar', 'Underline', 'Undo', 'PasteFromOffice'
 #    );
 
-    my @Plugins = (
-        'Alignment',    'Autoformat', 'BlockQuote', 'Bold', 'CodeBlock', 'DataFilter', 'DataSchema', 'FindAndReplace', 'FontColor',
-        'FontFamily',   'FontSize',   'FontBackgroundColor', 'GeneralHtmlSupport', 'Heading', 'HorizontalLine', 'Image', 'ImageResize', 'ImageStyle', 'ImageUpload',
-        'ImageToolbar', 'ImageInsert',
-        'Indent',       'Italic', 'Link', 'List', 'Paragraph', 'RemoveFormat', 'SelectAll', 'SimpleUploadAdapter', 'SourceEditing', 'SpecialCharacters',
-        'SpecialCharactersEssentials',
-        'Strikethrough', 'Table', 'TableCellProperties', 'TableColumnResize', 'TableProperties', 'TableToolbar', 'Underline', 'Undo', 'PasteFromOffice', 'Fullscreen'
-    );
+    my $PluginConfig = $ConfigObject->Get('Frontend::CKEditorPlugins');
+    my @Plugins = IsArrayRefWithData($PluginConfig) ? @{$PluginConfig} : ();
+    
 # EO CK5FullWindowMode
 
     # set data with AddJSData()

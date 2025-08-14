@@ -5,6 +5,8 @@
 // Copyright (C) 2021-2024 Znuny GmbH, https://znuny.org/
 // Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
 // --
+// $origin: otobo - d6da5cb110c2ffc9937070f4194e3e24091208d8 - var/httpd/htdocs/js/Core.UI.RichTextEditor.js
+// --
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
 // Foundation, either version 3 of the License, or (at your option) any later version.
@@ -133,9 +135,15 @@ Core.UI.RichTextEditor = (function (TargetNS) {
         var ClassicEditor = CKEditor5Wrapper.ClassicEditor;
         let EnabledPlugins = [];
         for (let pluginName of PluginList) {
+// RotherOSS / CK5-FullWindowMode
+//          let Plugin = CKEditor5Plugins[pluginName];
             let Plugin = CKEditor5Wrapper[pluginName];
+// EO CK5-FullWindowMode
             if (Plugin) {
+// RotherOSS / CK5-FullWindowMode
+//              EnabledPlugins.push(CKEditor5Plugins[pluginName]);
                 EnabledPlugins.push(CKEditor5Wrapper[pluginName]);
+// EO CK5-FullWindowMode
             } else {
                 Core.Exception.ShowError('Couldnt find plugin: ' + pluginName, 'JavaScriptError');
             }

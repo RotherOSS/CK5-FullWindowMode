@@ -14,7 +14,7 @@ System requirements
 
 Framework
 ---------
-OTOBO 11.0.x
+OTOBO 11.0.11
 
 Packages
 --------
@@ -28,17 +28,21 @@ Usage
 =====
 
 The FullScreen Plugin for the Richtext Editor (CKEditor 5) has been added for the Enhanced Mode of the editor.
-Enhanced Mode can be activated for the Agent and Customer Interface by enabling the `Frontend::RichText::EnhancedMode` and the `Frontend::RichText::EnhancedMode::Customer` configuration option respectively. 
+Enhanced Mode can be activated for the Agent and Customer Interface by enabling the ``Frontend::RichText::EnhancedMode`` and the ``Frontend::RichText::EnhancedMode::Customer`` configuration option respectively. 
 
 This package also updates the CKeditor version to 46.0.0, which is required for the FullScreen Plugin to work.
 
 The Plugins as well as the Toolbar Buttons of the CKEditor can now be configured via new System Configuration Options.
-The relevant option for this are 
-- `Frontend::EnhancedCKEditorToolbar` 
-- `Frontend::CKEditorPlugins` 
+The relevant option for this are
+
+- :ref:`Frontend-EnhancedCKEditorToolbar` 
+- :ref:`Frontend-CKEditorPlugins` 
+
 for the Agent Interface and 
-- `CustomerFrontend::EnhancedCKEditorToolbar` 
-- `CustomerFrontend::CKEditorPlugins` 
+
+- :ref:`CustomerFrontend-EnhancedCKEditorToolbar` 
+- :ref:`CustomerFrontend-CKEditorPlugins` 
+
 for the Customer Interface.
 
 .. note::
@@ -64,9 +68,13 @@ Frontend::RichTextEditorStyles
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Path to CKEditor editor CSS file. Changes to this setting will only consistently apply after deleting the OTOBO Cache via the Maint::Cache::Delete command!
 
+.. _Frontend-CKEditorPlugins:
+
 Frontend::CKEditorPlugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 List of Active CKEditor Plugins. (Only used if `Frontend::RichText::EnhancedMode` is enabled)
+
+.. _Frontend-EnhancedCKEditorToolbar:
 
 Frontend::EnhancedCKEditorToolbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -76,9 +84,13 @@ Frontend::RichTextPath
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Defines the URL rich text editor path.
 
+.. _CustomerFrontend-CKEditorPlugins:
+
 CustomerFrontend::CKEditorPlugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 List of Active CKEditor Plugins. (Only used if `CustomerFrontend::RichText::EnhancedMode` is enabled)
+
+.. _CustomerFrontend-EnhancedCKEditorToolbar:
 
 CustomerFrontend::EnhancedCKEditorToolbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

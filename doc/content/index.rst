@@ -44,6 +44,9 @@ for the Agent Interface and
 - :ref:`CustomerFrontend-CKEditorPlugins` 
 
 for the Customer Interface.
+A list of available Plugins can be found in the official CKEditor 5 Documentation:
+https://ckeditor.com/docs/ckeditor5/latest/features/index.html
+For most plugins, no additional installation is required, as they are already included in the CKEditor build used by OTOBO.
 
 .. note::
 

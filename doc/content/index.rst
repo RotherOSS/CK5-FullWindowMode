@@ -14,7 +14,7 @@ System requirements
 
 Framework
 ---------
-OTOBO 11.0.11
+OTOBO 11.0.14
 
 Packages
 --------
@@ -29,8 +29,6 @@ Usage
 
 The FullScreen Plugin for the Richtext Editor (CKEditor 5) has been added for the Enhanced Mode of the editor.
 Enhanced Mode can be activated for the Agent and Customer Interface by enabling the ``Frontend::RichText::EnhancedMode`` and the ``Frontend::RichText::EnhancedMode::Customer`` configuration option respectively. 
-
-This package also updates the CKeditor version to 46.0.0, which is required for the FullScreen Plugin to work.
 
 The Plugins as well as the Toolbar Buttons of the CKEditor can now be configured via new System Configuration Options.
 The relevant option for this are

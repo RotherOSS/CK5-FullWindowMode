@@ -4,7 +4,7 @@
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
 # Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
 # --
-# $origin: otobo - d6da5cb110c2ffc9937070f4194e3e24091208d8 - Kernel/Output/HTML/Layout.pm
+# $origin: otobo - a9d6280d72acd12969c31373f9e1f397e7137940 - Kernel/Output/HTML/Layout.pm
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -763,12 +763,12 @@ sub Login {
     }
 
     # Generate the minified CSS and JavaScript files and the tags referencing them (see LayoutLoader)
-    $Self->LoaderCreateAgentCSSCalls( Skin => 'default' );
+    $Self->LoaderCreateAgentCSSCalls();
     $Self->LoaderCreateAgentJSCalls();
     $Self->LoaderCreateJavaScriptTranslationData();
     $Self->LoaderCreateJavaScriptTemplateData();
 
-    # we need the baselink for VerfifiedGet() of selenium tests
+    # we need the baselink for VerifiedGet() of selenium tests
     $Self->AddJSData(
         Key   => 'Baselink',
         Value => $Self->{Baselink},
@@ -1512,7 +1512,7 @@ sub Header {
             my $ToolBarItemSeparatorMyTickets = 0;
             my $ToolBarItemSeparatorSearch    = 0;
 
-            # Check which seperator is needed
+            # Check which separator is needed
             SHORTCUTAVAILIBLE:
             for my $Key ( sort keys %Modules ) {
                 next SHORTCUTAVAILIBLE if !%{ $Modules{$Key} };
@@ -3948,7 +3948,7 @@ sub BuildDateSelection {
     );
 
     # Add Datepicker JS to output if we are not rendering a multivalue template.
-    if ( $Prefix !~ /^DynamicField_/ || ($Suffix ne '_Template' && $Prefix !~ /_Template$/)) {
+    if ( $Prefix !~ /^DynamicField_/ || ( $Suffix ne '_Template' && $Prefix !~ /_Template$/ ) ) {
         my $DatepickerJS = '
         Core.UI.Datepicker.Init({
             Day: $("#" + Core.App.EscapeSelector("' . $Prefix . '") + "Day"' .       ( $Suffix ? ' + Core.App.EscapeSelector("' . $Suffix . '")' : '' ) . '),
@@ -4584,14 +4584,14 @@ sub CustomerFooter {
         );
 
         for my $Link ( sort keys %{$FooterLinks} ) {
-            my $SubstitudedLink = $Link;
+            my $SubstitutedLink = $Link;
             for my $Option (qw/HttpType FQDN ScriptAlias/) {
-                $SubstitudedLink =~ s/<OTOBO_CONFIG_$Option>/$URLConfig{ $Option }/g;
+                $SubstitutedLink =~ s/<OTOBO_CONFIG_$Option>/$URLConfig{ $Option }/g;
             }
 
             push @FooterLinks, {
                 Description => $FooterLinks->{$Link},
-                Target      => $SubstitudedLink,
+                Target      => $SubstitutedLink,
             };
         }
 
@@ -6933,7 +6933,7 @@ sub SetCookie {
         # the configured value is the regular case
         $SameSite //= $ConfigObject->Get('SessionSameSite');
 
-        # fallback when neiter configured or passed from command line
+        # fallback when neither configured or passed from command line
         $SameSite //= 'lax';
 
         # lower case
@@ -6959,7 +6959,7 @@ sub SetCookie {
         # the configured value is the regular case
         $Path //= $ConfigObject->Get('ScriptAlias');
 
-        # fallback when neiter configured or passed from command line
+        # fallback when neither configured or passed from command line
         $Path //= '';
 
         # leading slash unless there already is a leading slash

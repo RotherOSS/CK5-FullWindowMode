@@ -3,7 +3,7 @@
 Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
 Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
 
-$origin: otobo - d6da5cb110c2ffc9937070f4194e3e24091208d8 - var/httpd/htdocs/skins/Customer/default/css/CKEditorCustomStyles.css
+$origin: otobo - a9d6280d72acd12969c31373f9e1f397e7137940 - var/httpd/htdocs/skins/Customer/default/css/CKEditorCustomStyles.css
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -18,6 +18,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 :root {
     --ck-border-radius: 10px;
     --ck-font-size-base: 14px;
+    --ck-content-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     --ck-color-toolbar-background: #f7f7f9;
     --ck-color-toolbar-background: var(--colBGLight);
     --ck-color-text: #00023c;

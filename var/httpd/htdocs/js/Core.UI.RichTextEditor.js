@@ -5,7 +5,7 @@
 // Copyright (C) 2021-2024 Znuny GmbH, https://znuny.org/
 // Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
 // --
-// $origin: otobo - d6da5cb110c2ffc9937070f4194e3e24091208d8 - var/httpd/htdocs/js/Core.UI.RichTextEditor.js
+// $origin: otobo - a9d6280d72acd12969c31373f9e1f397e7137940 - var/httpd/htdocs/js/Core.UI.RichTextEditor.js
 // --
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -129,6 +129,13 @@ Core.UI.RichTextEditor = (function (TargetNS) {
         } else {
             Integrations = [ 'url' ];
             BlockPasteImg = true;
+            removedPlugins = [ 'SimpleUploadAdapter' ];
+        }
+
+        // if this is a RichText DF, disable Image Upload
+        if($EditorArea.hasClass('DynamicFieldRichText')) {
+            ToolbarConfig = Core.Config.Get('RichText.ToolbarWithoutImage');
+            Integrations = [ 'url' ];
             removedPlugins = [ 'SimpleUploadAdapter' ];
         }
 
@@ -274,6 +281,7 @@ Core.UI.RichTextEditor = (function (TargetNS) {
                 tableProperties: {
                     defaultProperties: {
                         alignment: 'center',
+                        width: '100%'
                     }
                 },
                 contentToolbar: [
@@ -417,12 +425,11 @@ Core.UI.RichTextEditor = (function (TargetNS) {
                 });
 
                 if (!CustomerInterface) {
-                    // set initial Editor size as defined by System Configuration
-                    // add 10 px of padding to the editor width
-                    let EditorWidth = Number( Core.Config.Get("RichText.Width", 620) ) + 10;
+                    // set initial (maximum) Editor size as defined by System Configuration
+                    let EditorWidth = Number( Core.Config.Get("RichText.Width", 620) );
 
                     $domEditableElement.css("height", Core.Config.Get("RichText.Height", 320));
-                    $domEditableElement.css("width", EditorWidth);
+                    $domEditableElement.children().css("max-width", EditorWidth);
                 }
 
                 Core.App.Publish('Event.UI.RichTextEditor.InstanceCreated', [editor]);

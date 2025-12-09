@@ -10,7 +10,7 @@
   <Description Lang="de">Fügt eine Fullscreen Ansicht für den Text Editor hinzu.</Description>
   <Filelist>
     <File Permission="660" Location="var/httpd/htdocs/skins/Agent/default/css/CKEditorCustomStyles.css" />
-	  <File Permission="660" Location="var/httpd/htdocs/skins/Customer/default/css/CKEditorCustomStyles.css" />
+    <File Permission="660" Location="var/httpd/htdocs/skins/Customer/default/css/CKEditorCustomStyles.css" />
     <File Permission="660" Location="var/httpd/htdocs/js/Core.UI.CKEditor5Wrapper.js" />
     <File Permission="660" Location="var/httpd/htdocs/js/Core.UI.RichTextEditor.js" />
     <File Permission="660" Location="Kernel/Config/Files/XML/CK5FullWindowMode.xml" />

@@ -5,7 +5,7 @@
 // Copyright (C) 2021-2024 Znuny GmbH, https://znuny.org/
 // Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
 // --
-// $origin: otobo - d6da5cb110c2ffc9937070f4194e3e24091208d8 - var/httpd/htdocs/js/Core.UI.CK5EditorWrapper.js
+// $origin: otobo - 50644e590081edd0b65fc8117adb4221488b9467 - var/httpd/htdocs/js/Core.UI.CKEditor5Wrapper.js
 // --
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -25,7 +25,7 @@ import * as CKEditor5Wrapper from 'ckeditor5';
  * @description
  *      Wrapper for CKEditor 5.
  *      The CKEditor is using ES6 module syntax that is not compatible with OTOBO's currently used ES5 syntax.
- *      This makes the relevant exported variables of the CKEditor available to the global scope.
+ *      This wrapper makes the relevant exported variables of the CKEditor available to the global scope.
  */
 window.CKEditor5Wrapper = CKEditor5Wrapper;
 

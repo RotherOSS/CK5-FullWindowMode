@@ -5,7 +5,7 @@
 // Copyright (C) 2021-2024 Znuny GmbH, https://znuny.org/
 // Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
 // --
-// $origin: otobo - a9d6280d72acd12969c31373f9e1f397e7137940 - var/httpd/htdocs/js/Core.UI.RichTextEditor.js
+// $origin: otobo - 5ff97ad03c87ced273efa5217f82c59f683978f3 - var/httpd/htdocs/js/Core.UI.RichTextEditor.js
 // --
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -303,6 +303,142 @@ Core.UI.RichTextEditor = (function (TargetNS) {
 
                 // Headers sent along with the XMLHttpRequest to the upload server.
                 headers: {}
+            },
+            fontColor: {
+                colors: [
+                    {
+                        color: '#000000',
+                        label: 'Black'
+                    },
+                    {
+                        color: '#4d4d4d',
+                        label: 'Dim grey'
+                    },
+                    {
+                        color: '#999999',
+                        label: 'Grey'
+                    },
+                    {
+                        color: '#e6e6e6',
+                        label: 'Light grey'
+                    },
+                    {
+                        color: '#ffffff',
+                        label: 'White',
+                        hasBorder: true
+                    },
+                    {
+                        color: '#e64c4c',
+                        label: 'Red'
+                    },
+                    {
+                        color: '#e6994c',
+                        label: 'Orange'
+                    },
+                    {
+                        color: '#e6e64c',
+                        label: 'Yellow'
+                    },
+                    {
+                        color: '#99e64c',
+                        label: 'Light green'
+                    },
+                    {
+                        color: '#4ce64c',
+                        label: 'Green'
+                    },
+                    {
+                        color: '#4ce699',
+                        label: 'Aquamarine'
+                    },
+                    {
+                        color: '#4ce6e6',
+                        label: 'Turquoise'
+                    },
+                    {
+                        color: '#4c99e6',
+                        label: 'Light blue'
+                    },
+                    {
+                        color: '#4c4ce6',
+                        label: 'Blue'
+                    },
+                    {
+                        color: '#994ce6',
+                        label: 'Purple'
+                    }
+                ],
+                colorPicker: {
+				    format: 'hex'
+			    }
+            },
+            fontBackgroundColor: {
+                colors: [
+                    {
+                        color: '#000000',
+                        label: 'Black'
+                    },
+                    {
+                        color: '#4d4d4d',
+                        label: 'Dim grey'
+                    },
+                    {
+                        color: '#999999',
+                        label: 'Grey'
+                    },
+                    {
+                        color: '#e6e6e6',
+                        label: 'Light grey'
+                    },
+                    {
+                        color: '#ffffff',
+                        label: 'White',
+                        hasBorder: true
+                    },
+                    {
+                        color: '#e64c4c',
+                        label: 'Red'
+                    },
+                    {
+                        color: '#e6994c',
+                        label: 'Orange'
+                    },
+                    {
+                        color: '#e6e64c',
+                        label: 'Yellow'
+                    },
+                    {
+                        color: '#99e64c',
+                        label: 'Light green'
+                    },
+                    {
+                        color: '#4ce64c',
+                        label: 'Green'
+                    },
+                    {
+                        color: '#4ce699',
+                        label: 'Aquamarine'
+                    },
+                    {
+                        color: '#4ce6e6',
+                        label: 'Turquoise'
+                    },
+                    {
+                        color: '#4c99e6',
+                        label: 'Light blue'
+                    },
+                    {
+                        color: '#4c4ce6',
+                        label: 'Blue'
+                    },
+                    {
+                        color: '#994ce6',
+                        label: 'Purple'
+                    }
+                ],
+                colorPicker: {
+				    format: 'hex'
+			    }
             },
             translations: [
                 CKEditor5CoreTranslations,

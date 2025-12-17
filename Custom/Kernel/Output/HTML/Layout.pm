@@ -4,7 +4,7 @@
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
 # Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
 # --
-# $origin: otobo - a9d6280d72acd12969c31373f9e1f397e7137940 - Kernel/Output/HTML/Layout.pm
+# $origin: otobo - fb475a291104f2684fa6366de0eb5e517a66c694 - Kernel/Output/HTML/Layout.pm
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -992,6 +992,19 @@ sub ChallengeTokenCheck {
     return;
 }
 
+=head2 FatalError()
+
+Log the error message and present the error message in the browser.
+
+This method does not return as it throws an exception of the class
+C<Kernel::System::Web::Exception>.
+
+    $LayoutObject->FatalError(
+        Message => "Can't open $ConfigFile: $!",
+    );
+
+=cut
+
 sub FatalError {
     my ( $Self, %Param ) = @_;
 
@@ -1160,16 +1173,14 @@ sub Warning {
 
 =head2 Notify()
 
-create notify lines
-
-    infos, the text will be translated
+creates informational notify lines. The text will be translated.
 
     my $Output = $LayoutObject->Notify(
         Priority => 'Warning',
-        Info => 'Some Info Message',
+        Info     => 'Some Info Message',
     );
 
-    data with link, the text will be translated
+The content of C<Data> will be presented as a link. The text will be translated.
 
     my $Output = $LayoutObject->Notify(
         Priority  => 'Warning',
@@ -1178,14 +1189,14 @@ create notify lines
         LinkClass => 'some_CSS_class',              # optional
     );
 
-    errors, the text will be translated
+The content will be presented as an error. The text will be translated.
 
     my $Output = $LayoutObject->Notify(
         Priority => 'Error',
-        Info => 'Some Error Message',
+        Info     => 'Some Error Message',
     );
 
-    errors from log backend, if no error exists, a '' will be returned
+Present the errors from the log backend. If no error exists then an empty string will be returned
 
     my $Output = $LayoutObject->Notify(
         Priority => 'Error',
@@ -1198,14 +1209,18 @@ sub Notify {
 
     # create & return output
     if ( !$Param{Info} && !$Param{Data} ) {
-        $Param{BackendMessage} = $Kernel::OM->Get('Kernel::System::Log')->GetLogEntry(
-            Type => 'Notice',
-            What => 'Message',
+        $Param{BackendMessage} =
+            $Kernel::OM->Get('Kernel::System::Log')->GetLogEntry(
+                Type => 'Notice',
+                What => 'Message',
             )
-            || $Kernel::OM->Get('Kernel::System::Log')->GetLogEntry(
+            ||
+            $Kernel::OM->Get('Kernel::System::Log')->GetLogEntry(
                 Type => 'Error',
                 What => 'Message',
-            ) || '';
+            )
+            ||
+            '';
 
         $Param{Info} = $Param{BackendMessage};
 
@@ -1257,6 +1272,7 @@ sub Notify {
             },
         );
     }
+
     return $Self->Output(
         TemplateFile => 'Notify',
         Data         => {

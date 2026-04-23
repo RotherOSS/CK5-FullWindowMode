@@ -7,7 +7,7 @@ Sacrifice to Sphinx
 
 Description
 ===========
-Adds a Fullscreen mode for the text editor.
+Adds a fullscreen mode for the OTOBO Richtext editor.
 
 System requirements
 ===================

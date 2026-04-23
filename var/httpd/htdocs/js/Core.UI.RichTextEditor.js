@@ -3,9 +3,9 @@
 // --
 // Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
 // Copyright (C) 2021-2024 Znuny GmbH, https://znuny.org/
-// Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
+// Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
 // --
-// $origin: otobo - 5ff97ad03c87ced273efa5217f82c59f683978f3 - var/httpd/htdocs/js/Core.UI.RichTextEditor.js
+// $origin: otobo - da5c3de7f28bfb51e31d2cf453d286562f1f1a54 - var/httpd/htdocs/js/Core.UI.RichTextEditor.js
 // --
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -106,7 +106,8 @@ Core.UI.RichTextEditor = (function (TargetNS) {
         }
 
         // Common editor label
-        const RichTextLabel = $('label[for="RichText"]');
+        //  use wildcard to include "RichText<ActivityDialogID>"
+        const RichTextLabel = $EditorArea.parent().find('label[for^="RichText"]');
 
         var ToolbarConfig;
         if ( CustomerInterface ) {
@@ -224,6 +225,13 @@ Core.UI.RichTextEditor = (function (TargetNS) {
                         classes: true,
                         styles: true
                     },
+                ],
+                disallow: [
+                    {
+                        styles: {
+                            position: /(absolute|sticky|fixed)$/
+                        }
+                    }
                 ]
             },
             image: {
@@ -369,8 +377,8 @@ Core.UI.RichTextEditor = (function (TargetNS) {
                     }
                 ],
                 colorPicker: {
-				    format: 'hex'
-			    }
+                    format: 'hex'
+                }
             },
             fontBackgroundColor: {
                 colors: [
@@ -437,12 +445,12 @@ Core.UI.RichTextEditor = (function (TargetNS) {
                     }
                 ],
                 colorPicker: {
-				    format: 'hex'
-			    }
+                    format: 'hex'
+                }
             },
             translations: [
                 CKEditor5CoreTranslations,
-            ]            
+            ]
         })
             .then(editor => {
                 /* Generate ID for current Editor */
@@ -570,7 +578,7 @@ Core.UI.RichTextEditor = (function (TargetNS) {
 
                 Core.App.Publish('Event.UI.RichTextEditor.InstanceCreated', [editor]);
 
-                // workaround for ckeditor not using data filter correctly on prefilled content
+                // workaround for ckeditor not using data filter correctly on pre-filled content
                 if (editor.ElementId == 'RichText') {
                     editor.setData(editor.sourceElement.innerText);
                 }
@@ -588,7 +596,7 @@ Core.UI.RichTextEditor = (function (TargetNS) {
                     }, 500);
                 });
 
-                editor.ui.focusTracker.on('change:isFocused', (evt, name, isFocused) => {
+                editor.ui.focusTracker.on('change:isFocused', (_evt, _name, isFocused) => {
                     if (!isFocused) {
                         $("#" + $EditorArea.attr('id')).val(editor.getData());
 
@@ -677,7 +685,7 @@ Core.UI.RichTextEditor = (function (TargetNS) {
      * @name GetRTE
      * @memberof Core.UI.RichTextEditor
      * @function
-     * @returns {jQueryObject} jQuery object of the corresponsing RTE element.
+     * @returns {jQueryObject} jQuery object of the corresponding RTE element.
      * @param {jQueryObject} $EditorArea - The jQuery object of the element that is a rich text editor.
      * @description
      *      Get RTE jQuery element.

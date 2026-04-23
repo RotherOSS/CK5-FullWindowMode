@@ -2,9 +2,9 @@
 # OTOBO is a web-based ticketing system for service organisations.
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
+# Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
 # --
-# $origin: otobo - fb475a291104f2684fa6366de0eb5e517a66c694 - Kernel/Output/HTML/Layout.pm
+# $origin: otobo - 30c87ca95699a47933466f8c664803f1b3ebd537 - Kernel/Output/HTML/Layout.pm
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -428,8 +428,8 @@ EOF
         $Kernel::OM->Get('Kernel::System::Log')->Log(
             Priority => 'error',
             Message  =>
-                "No existing template directory found ('$Self->{TemplateDir}')!.
-                Default theme used instead.",
+                "No existing template directory found ('$Self->{TemplateDir}')!"
+                . " Default theme used instead.",
         );
 
         # Set TemplateDir to 'Standard' as a fallback.
@@ -1076,17 +1076,14 @@ sub FatalDie {
     }
 
     # get backend error messages
-    for (qw(Message Traceback)) {
-        my $Backend = 'Backend' . $_;
-        $Param{$Backend} = $Kernel::OM->Get('Kernel::System::Log')->GetLogEntry(
-            Type => 'Error',
-            What => $_
-        ) || '';
-        $Param{$Backend} = $Self->Ascii2Html(
-            Text           => $Param{$Backend},
-            HTMLResultMode => 1,
-        );
-    }
+    $Param{BackendMessage} = $Kernel::OM->Get('Kernel::System::Log')->GetLogEntry(
+        Type => 'Error',
+        What => 'Message'
+    ) || '';
+    $Param{BackendMessage} = $Self->Ascii2Html(
+        Text           => $Param{BackendMessage},
+        HTMLResultMode => 1,
+    );
     if ( !$Param{Message} ) {
         $Param{Message} = $Param{BackendMessage};
     }
@@ -1108,36 +1105,23 @@ sub Error {
     my ( $Self, %Param ) = @_;
 
     # get backend error messages
-    for (qw(Message Traceback)) {
-        my $Backend = 'Backend' . $_;
-        $Param{$Backend} = $Kernel::OM->Get('Kernel::System::Log')->GetLogEntry(
-            Type => 'Error',
-            What => $_
-        ) || '';
-    }
-    if ( !$Param{BackendMessage} && !$Param{BackendTraceback} ) {
+    $Param{BackendMessage} = $Kernel::OM->Get('Kernel::System::Log')->GetLogEntry(
+        Type => 'Error',
+        What => 'Message'
+    ) || '';
+    if ( !$Param{BackendMessage} ) {
         $Kernel::OM->Get('Kernel::System::Log')->Log(
             Priority => 'error',
             Message  => $Param{Message} || '?',
         );
-        for (qw(Message Traceback)) {
-            my $Backend = 'Backend' . $_;
-            $Param{$Backend} = $Kernel::OM->Get('Kernel::System::Log')->GetLogEntry(
-                Type => 'Error',
-                What => $_
-            ) || '';
-        }
+        $Param{BackendMessage} = $Kernel::OM->Get('Kernel::System::Log')->GetLogEntry(
+            Type => 'Error',
+            What => 'Message'
+        ) || '';
     }
 
     if ( !$Param{Message} ) {
         $Param{Message} = $Param{BackendMessage};
-    }
-
-    if ( $Param{BackendTraceback} ) {
-        $Self->Block(
-            Name => 'ShowBackendTraceback',
-            Data => \%Param,
-        );
     }
 
     # create & return output
@@ -2840,7 +2824,9 @@ sub Attachment {
         # object-src: allow 'self' so that the browser can load plugins for PDF display
         # frame-src:  block all frames
         # style-src:  allow inline styles for nice email display
-        $Headers{'Content-Security-Policy'} = q{default-src *; img-src * data:; script-src 'none'; object-src 'self'; frame-src 'none'; style-src 'unsafe-inline';};
+        # referrer:   don't send referrers to prevent referrer-leak attacks
+        $Headers{'Content-Security-Policy'}
+            = q{default-src 'self'; img-src * data:; script-src 'none'; object-src 'self'; frame-src 'none'; style-src 'unsafe-inline'; referrer no-referrer;};
 
         # Use Referrer-Policy header to suppress referrer information in modern browsers
         # in order to prevent referrer-leak attacks.
@@ -3381,7 +3367,7 @@ sub NavigationBar {
         $Self->Block(
             Name => 'ItemArea',
             Data => {
-                %$Item,
+                %{$Item},
                 AccessKeyReference => $Item->{AccessKey} ? " ($Item->{AccessKey})" : '',
             },
         );
@@ -3411,7 +3397,7 @@ sub NavigationBar {
             $Self->Block(
                 Name => 'ItemAreaSubItem',    #$Item->{Block} || 'Item',
                 Data => {
-                    %$ItemSub,
+                    %{$ItemSub},
                     AccessKeyReference => $ItemSub->{AccessKey} ? " ($ItemSub->{AccessKey})" : '',
                 },
             );
@@ -3653,13 +3639,24 @@ sub BuildDateSelection {
 
     my $DateInputStyle = $ConfigObject->Get('TimeInputFormat');
     my $MinuteStep     = $ConfigObject->Get('TimeInputMinutesStep');
-    my $Prefix         = $Param{Prefix}   || '';
-    my $Suffix         = $Param{Suffix}   || '';
-    my $DiffTime       = $Param{DiffTime} || 0;
-    my $Format         = $Param{Format} // 'DateInputFormatLong';
-    my $Optional       = $Param{ $Prefix . 'Optional' } || 0;
-    my $Used           = $Param{ $Prefix . 'Used' }     || 0;
-    my $Class          = $Param{ $Prefix . 'Class' }    || '';
+    my $Prefix         = $Param{Prefix} || '';
+    my $Suffix         = $Param{Suffix} || '';
+
+    # sanitize prefix and suffix
+    #   allow the following:
+    #       - characters (not only A-Za-z, as umlauts should be allowed as well)
+    #       - digits (arabic as well as non-arabic)
+    #       - dash (e.g. for dynamic field namespaces)
+    #       - underscore
+    #       - : and # (e.g. for system configuration names)
+    $Prefix =~ s/[^\w\d\-_:#]//g;
+    $Suffix =~ s/[^\w\d\-_:#]//g;
+
+    my $DiffTime = $Param{DiffTime} || 0;
+    my $Format   = $Param{Format} // 'DateInputFormatLong';
+    my $Optional = $Param{ $Prefix . 'Optional' } || 0;
+    my $Used     = $Param{ $Prefix . 'Used' }     || 0;
+    my $Class    = $Param{ $Prefix . 'Class' }    || '';
 
     # Defines, if the date selection should be validated on client side with JS
     my $Validate = $Param{Validate} || 0;
@@ -3926,6 +3923,15 @@ sub BuildDateSelection {
     if ( !defined $WeekDayStart ) {
         $WeekDayStart = 1;
     }
+
+    # sanitize WeekDayStart
+    #   allow the following:
+    #       - characters (not only A-Za-z, as umlauts should be allowed as well)
+    #       - digits (arabic as well as non-arabic)
+    #       - dash (e.g. for dynamic field namespaces)
+    #       - underscore
+    #       - : and # (e.g. for system configuration names)
+    $WeekDayStart =~ s/[^\w\d\-_:#]//g;
 
     my $Output = '';
 
@@ -5029,23 +5035,19 @@ sub CustomerError {
     my ( $Self, %Param ) = @_;
 
     # get backend error messages
-    for (qw(Message Traceback)) {
-        $Param{ 'Backend' . $_ } = $Kernel::OM->Get('Kernel::System::Log')->GetLogEntry(
-            Type => 'Error',
-            What => $_
-        ) || '';
-    }
-    if ( !$Param{BackendMessage} && !$Param{BackendTraceback} ) {
+    $Param{BackendMessage} = $Kernel::OM->Get('Kernel::System::Log')->GetLogEntry(
+        Type => 'Error',
+        What => 'Message'
+    ) || '';
+    if ( !$Param{BackendMessage} ) {
         $Kernel::OM->Get('Kernel::System::Log')->Log(
             Priority => 'error',
             Message  => $Param{Message} || '?',
         );
-        for (qw(Message Traceback)) {
-            $Param{ 'Backend' . $_ } = $Kernel::OM->Get('Kernel::System::Log')->GetLogEntry(
-                Type => 'Error',
-                What => $_
-            ) || '';
-        }
+        $Param{BackendMessage} = $Kernel::OM->Get('Kernel::System::Log')->GetLogEntry(
+            Type => 'Error',
+            What => 'Message'
+        ) || '';
     }
 
     if ( !$Param{Message} ) {
@@ -5212,7 +5214,7 @@ sub Ascii2RichText {
 
 =head2 RichText2Ascii()
 
-converts text to rich text
+converts rich text, that is HTML, to laid out plain text
 
     my $TextString = $LayoutObject->RichText2Ascii(
         String => $HTMLString,
@@ -5224,17 +5226,18 @@ sub RichText2Ascii {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for (qw(String)) {
-        if ( !defined $Param{$_} ) {
+    for my $Key (qw(String)) {
+        if ( !defined $Param{$Key} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
-                Message  => "Need $_!"
+                Message  => "Need $Key!"
             );
+
             return;
         }
     }
 
-    # ascii 2 html
+    # HTML to plain text
     $Param{String} = $Kernel::OM->Get('Kernel::System::HTMLUtils')->ToAscii(
         String => $Param{String},
     );
@@ -5642,7 +5645,7 @@ sub _BuildSelectionOptionRefCreate {
 
     # set Translation option
     $OptionRef->{Translation} = 1;
-    if ( defined $Param{Translation} && $Param{Translation} eq 0 ) {
+    if ( defined $Param{Translation} && $Param{Translation} == 0 ) {
         $OptionRef->{Translation} = 0;
     }
 
@@ -6459,7 +6462,7 @@ sub SetRichTextParameters {
     my ( @Toolbar, @ToolbarWithoutImage );
 
     if ( $ConfigObject->Get('Frontend::RichText::EnhancedMode') == 1 ) {
-# RotherOSS / CK5FullWindowMode        
+# RotherOSS / CK5FullWindowMode
 #        @Toolbar = (
 #            'heading',       'bold',              'italic', 'underline', 'strikethrough', '|',
 #            'bulletedList',  'numberedList',      '|',
@@ -6498,7 +6501,7 @@ sub SetRichTextParameters {
                 }
 
             }
-            
+
             pop @Toolbar if ($Toolbar[-1] eq '|');
 
             @ToolbarWithoutImage = grep { $_ ne 'insertImage' } @Toolbar;
@@ -6510,8 +6513,8 @@ sub SetRichTextParameters {
             );
             @Toolbar = ();
             @ToolbarWithoutImage = ();
-        }  
-        
+        }
+
 # EO CK5FullWindowMode
 
     }
@@ -6693,7 +6696,7 @@ sub CustomerSetRichTextParameters {
                 }
 
             }
-            
+
             pop @Toolbar if ($Toolbar[-1] eq '|');
 
             @ToolbarWithoutImage = grep { $_ ne 'insertImage' } @Toolbar;
@@ -6705,7 +6708,7 @@ sub CustomerSetRichTextParameters {
             );
             @Toolbar = ();
             @ToolbarWithoutImage = ();
-        }  
+        }
 
 # EO CK5FullWindowMode
 
@@ -6802,7 +6805,7 @@ sub CustomerSetRichTextParameters {
 
     my $PluginConfig = $ConfigObject->Get('Frontend::CKEditorPlugins');
     my @Plugins = IsArrayRefWithData($PluginConfig) ? @{$PluginConfig} : ();
-    
+
 # EO CK5FullWindowMode
 
     # set data with AddJSData()

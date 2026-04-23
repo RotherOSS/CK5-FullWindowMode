@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019–2026 Rother OSS GmbH, https://otobo.io
+# This file is distributed under the same license as the OTOBO Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: OTOBO Documentation dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-23 06:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../content/index.rst:1
+msgid "Contents"
+msgstr ""
+
+#: ../content/index.rst:6
+msgid "Description"
+msgstr ""
+
+#: ../content/index.rst:7
+msgid "Adds a Fullscreen mode for the text editor."
+msgstr ""
+
+#: ../content/index.rst:10
+msgid "System requirements"
+msgstr ""
+
+#: ../content/index.rst:13
+msgid "Framework"
+msgstr ""
+
+#: ../content/index.rst:14
+msgid "OTOBO 11.0.14"
+msgstr ""
+
+#: ../content/index.rst:17
+msgid "Packages"
+msgstr ""
+
+#: ../content/index.rst:18
+#: ../content/index.rst:22
+msgid "\\-"
+msgstr ""
+
+#: ../content/index.rst:21
+msgid "Third-party software"
+msgstr ""
+
+#: ../content/index.rst:25
+msgid "Usage"
+msgstr ""
+
+#: ../content/index.rst:27
+msgid "The FullScreen Plugin for the Richtext Editor (CKEditor 5) has been added for the Enhanced Mode of the editor. Enhanced Mode can be activated for the Agent and Customer Interface by enabling the ``Frontend::RichText::EnhancedMode`` and the ``Frontend::RichText::EnhancedMode::Customer`` configuration option respectively."
+msgstr ""
+
+#: ../content/index.rst:30
+msgid "The Plugins as well as the Toolbar Buttons of the CKEditor can now be configured via new System Configuration Options. The relevant option for this are"
+msgstr ""
+
+#: ../content/index.rst:33
+msgid ":ref:`Frontend-EnhancedCKEditorToolbar`"
+msgstr ""
+
+#: ../content/index.rst:34
+msgid ":ref:`Frontend-CKEditorPlugins`"
+msgstr ""
+
+#: ../content/index.rst:36
+msgid "for the Agent Interface and"
+msgstr ""
+
+#: ../content/index.rst:38
+msgid ":ref:`CustomerFrontend-EnhancedCKEditorToolbar`"
+msgstr ""
+
+#: ../content/index.rst:39
+msgid ":ref:`CustomerFrontend-CKEditorPlugins`"
+msgstr ""
+
+#: ../content/index.rst:41
+msgid "for the Customer Interface. A list of available Plugins can be found in the official CKEditor 5 Documentation: https://ckeditor.com/docs/ckeditor5/latest/features/index.html For most plugins, no additional installation is required, as they are already included in the CKEditor build used by OTOBO."
+msgstr ""
+
+#: ../content/index.rst:48
+msgid "These options only apply if Enhanced Mode is enabled."
+msgstr ""
+
+#: ../content/index.rst:51
+msgid "Configuration Reference"
+msgstr ""
+
+#: ../content/index.rst:54
+msgid "Frontend::Base"
+msgstr ""
+
+#: ../content/index.rst:57
+msgid "CustomerFrontend::RichTextArticleStyles"
+msgstr ""
+
+#: ../content/index.rst:58
+#: ../content/index.rst:62
+msgid "Path to CKEditor content CSS file. Changes to this setting will only consistently apply after deleting the OTOBO Cache via the Maint::Cache::Delete command!"
+msgstr ""
+
+#: ../content/index.rst:61
+msgid "Frontend::RichTextArticleStyles"
+msgstr ""
+
+#: ../content/index.rst:65
+msgid "Frontend::RichTextEditorStyles"
+msgstr ""
+
+#: ../content/index.rst:66
+#: ../content/index.rst:98
+msgid "Path to CKEditor editor CSS file. Changes to this setting will only consistently apply after deleting the OTOBO Cache via the Maint::Cache::Delete command!"
+msgstr ""
+
+#: ../content/index.rst:71
+msgid "Frontend::CKEditorPlugins"
+msgstr ""
+
+#: ../content/index.rst:72
+msgid "List of Active CKEditor Plugins. (Only used if `Frontend::RichText::EnhancedMode` is enabled)"
+msgstr ""
+
+#: ../content/index.rst:77
+msgid "Frontend::EnhancedCKEditorToolbar"
+msgstr ""
+
+#: ../content/index.rst:78
+msgid "Controls shown in the Enhanced Mode CKEditor Toolbar. Each Array defines a Button Group that will be visibly seperated in the Editor.(Only used if `Frontend::RichText::EnhancedMode` is enabled)"
+msgstr ""
+
+#: ../content/index.rst:81
+msgid "Frontend::RichTextPath"
+msgstr ""
+
+#: ../content/index.rst:82
+msgid "Defines the URL rich text editor path."
+msgstr ""
+
+#: ../content/index.rst:87
+msgid "CustomerFrontend::CKEditorPlugins"
+msgstr ""
+
+#: ../content/index.rst:88
+msgid "List of Active CKEditor Plugins. (Only used if `CustomerFrontend::RichText::EnhancedMode` is enabled)"
+msgstr ""
+
+#: ../content/index.rst:93
+msgid "CustomerFrontend::EnhancedCKEditorToolbar"
+msgstr ""
+
+#: ../content/index.rst:94
+msgid "Controls shown in the Enhanced Mode CKEditor Toolbar. Each Array defines a Button Group that will be visibly seperated in the Editor.(Only used if `CustomerFrontend::RichText::EnhancedMode` is enabled)"
+msgstr ""
+
+#: ../content/index.rst:97
+msgid "CustomerFrontend::RichTextEditorStyles"
+msgstr ""
+
+#: ../content/index.rst:101
+msgid "About"
+msgstr ""
+
+#: ../content/index.rst:104
+msgid "Contact"
+msgstr ""
+
+#: ../content/index.rst:105
+msgid "Rother OSS GmbH"
+msgstr ""
+
+#: ../content/index.rst:106
+msgid "Email: hello@otobo.io"
+msgstr ""
+
+#: ../content/index.rst:107
+msgid "Web: https://otobo.io"
+msgstr ""
+
+#: ../content/index.rst:110
+msgid "Version"
+msgstr ""
+
+#: ../content/index.rst:111
+msgid "Author: |doc-vendor| / Version: |doc-version| / Date of release: |doc-datestamp|"
+msgstr ""

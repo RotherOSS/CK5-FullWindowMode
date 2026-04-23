@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Documentation dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 06:13+0000\n"
+"POT-Creation-Date: 2026-04-23 08:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgid "Description"
 msgstr ""
 
 #: ../content/index.rst:7
-msgid "Adds a Fullscreen mode for the text editor."
+msgid "Adds a fullscreen mode for the OTOBO Richtext editor."
 msgstr ""
 
 #: ../content/index.rst:10

@@ -6,8 +6,9 @@
     <Vendor>Rother OSS GmbH</Vendor>
     <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
-    <Description Lang="en">Adds a Fullscreen mode for the text editor.</Description>
+    <Description Lang="en">Adds a full screen mode for the text editor.</Description>
     <Description Lang="de">Fügt eine Fullscreen Ansicht für den Text Editor hinzu.</Description>
+    <Description Lang="hu">Teljes képernyős módot ad a szövegszerkesztőhöz.</Description>
     <Filelist>
         <File Permission="660" Location="var/httpd/htdocs/skins/Agent/default/css/CKEditorCustomStyles.css" />
         <File Permission="660" Location="var/httpd/htdocs/skins/Customer/default/css/CKEditorCustomStyles.css" />

@@ -1,0 +1,262 @@
+# Hungarian translations for CK5FullWindowMode Documentation.
+# Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
+# This file is distributed under the same license as the CK5FullWindowMode documentation.
+#
+# Balázs Úr <balazs@urbalazs.hu>, 2026.
+msgid ""
+msgstr ""
+"Project-Id-Version: CK5FullWindowMode Documentation 11.0.4\n"
+"Report-Msgid-Bugs-To: https://github.com/RotherOSS/CK5-FullWindowMode/"
+"issues\n"
+"POT-Creation-Date: 2026-11-17 12:14+0100\n"
+"PO-Revision-Date: 2026-11-17 12:37+0100\n"
+"Last-Translator: Balázs Úr <balazs@urbalazs.hu>\n"
+"Language-Team: Hungarian <https://translate.otobo.org/projects/otobo-11-0/"
+"addons/manuals/ck5fullwindowmode-documentation/hu/>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 26.08.1\n"
+
+#: ../content/index.rst:1
+msgid "Contents"
+msgstr "Tartalom"
+
+#: ../content/index.rst:6
+msgid "Description"
+msgstr "Leírás"
+
+#: ../content/index.rst:7
+msgid "Adds a fullscreen mode for the OTOBO Richtext editor."
+msgstr "Teljes képernyős módot ad az OTOBO formázottszöveg-szerkesztőjéhez."
+
+#: ../content/index.rst:10
+msgid "System requirements"
+msgstr "Rendszerkövetelmények"
+
+#: ../content/index.rst:13
+msgid "Framework"
+msgstr "Keretrendszer"
+
+#: ../content/index.rst:14
+msgid "OTOBO 11.0.14"
+msgstr "OTOBO 11.0.14"
+
+#: ../content/index.rst:17
+msgid "Packages"
+msgstr "Csomagok"
+
+#: ../content/index.rst:18 ../content/index.rst:22
+msgid "\\-"
+msgstr "\\-"
+
+#: ../content/index.rst:21
+msgid "Third-party software"
+msgstr "Harmadik féltől származó szoftverek"
+
+#: ../content/index.rst:25
+msgid "Usage"
+msgstr "Használat"
+
+#: ../content/index.rst:27
+msgid ""
+"The FullScreen Plugin for the Richtext Editor (CKEditor 5) has been added "
+"for the Enhanced Mode of the editor. Enhanced Mode can be activated for the "
+"Agent and Customer Interface by enabling the "
+"``Frontend::RichText::EnhancedMode`` and the "
+"``Frontend::RichText::EnhancedMode::Customer`` configuration option "
+"respectively."
+msgstr ""
+"A formázottszöveg-szerkesztő (CKEditor 5) teljes képernyős bővítménye "
+"hozzáadásra került a szerkesztő bővített módjához. A bővített mód az "
+"ügyintézői és az ügyfélfelületnél is aktiválható a megfelelő "
+"``Frontend::RichText::EnhancedMode`` és "
+"``Frontend::RichText::EnhancedMode::Customer`` rendszerbeállítási "
+"lehetőséggel."
+
+#: ../content/index.rst:30
+msgid ""
+"The Plugins as well as the Toolbar Buttons of the CKEditor can now be "
+"configured via new System Configuration Options. The relevant option for "
+"this are"
+msgstr ""
+"A bővítmények és a CKEditor eszköztárgombjai mostantól a rendszerbeállítási "
+"lehetőségeken keresztül állíthatók be. Az erre vonatkozó beállítások a"
+
+#: ../content/index.rst:33
+msgid ":ref:`Frontend-EnhancedCKEditorToolbar`"
+msgstr ":ref:`Frontend-EnhancedCKEditorToolbar`"
+
+#: ../content/index.rst:34
+msgid ":ref:`Frontend-CKEditorPlugins`"
+msgstr ":ref:`Frontend-CKEditorPlugins`"
+
+#: ../content/index.rst:36
+msgid "for the Agent Interface and"
+msgstr "az ügyintézői felülethez, és"
+
+#: ../content/index.rst:38
+msgid ":ref:`CustomerFrontend-EnhancedCKEditorToolbar`"
+msgstr ":ref:`CustomerFrontend-EnhancedCKEditorToolbar`"
+
+#: ../content/index.rst:39
+msgid ":ref:`CustomerFrontend-CKEditorPlugins`"
+msgstr ":ref:`CustomerFrontend-CKEditorPlugins`"
+
+#: ../content/index.rst:41
+msgid ""
+"for the Customer Interface. A list of available Plugins can be found in the "
+"official CKEditor 5 Documentation: https://ckeditor.com/docs/ckeditor5/"
+"latest/features/index.html For most plugins, no additional installation is "
+"required, as they are already included in the CKEditor build used by OTOBO."
+msgstr ""
+"az ügyfélfelülethez. Az elérhető bővítmények listája a hivatalos CKEditor 5 "
+"dokumentációban található: https://ckeditor.com/docs/ckeditor5/latest/"
+"features/index.html (angolul). A legtöbb bővítménynél nincs szükség további "
+"telepítésre, mivel azokat már tartalmazza az OTOBO által használt CKEditor-"
+"összeállítás."
+
+#: ../content/index.rst:48
+msgid "These options only apply if Enhanced Mode is enabled."
+msgstr ""
+"Ezek a beállítások csak akkor kerülnek alkalmazásra, ha a bővített mód "
+"engedélyezve van."
+
+#: ../content/index.rst:51
+msgid "Configuration Reference"
+msgstr "Beállítások hivatkozása"
+
+#: ../content/index.rst:54
+msgid "Frontend::Base"
+msgstr "Frontend::Base"
+
+#: ../content/index.rst:57
+msgid "CustomerFrontend::RichTextArticleStyles"
+msgstr "CustomerFrontend::RichTextArticleStyles"
+
+#: ../content/index.rst:58 ../content/index.rst:62
+msgid ""
+"Path to CKEditor content CSS file. Changes to this setting will only "
+"consistently apply after deleting the OTOBO Cache via the "
+"Maint::Cache::Delete command!"
+msgstr ""
+"A CKEditor-tartalom CSS-fájljának útvonala. Ezen beállítás változtatásai "
+"csak azután lesznek következetesen alkalmazva, miután az OTOBO gyorsítótára "
+"törlésre került a Maint::Cache::Delete paranccsal!"
+
+#: ../content/index.rst:61
+msgid "Frontend::RichTextArticleStyles"
+msgstr "Frontend::RichTextArticleStyles"
+
+#: ../content/index.rst:65
+msgid "Frontend::RichTextEditorStyles"
+msgstr "Frontend::RichTextEditorStyles"
+
+#: ../content/index.rst:66 ../content/index.rst:98
+msgid ""
+"Path to CKEditor editor CSS file. Changes to this setting will only "
+"consistently apply after deleting the OTOBO Cache via the "
+"Maint::Cache::Delete command!"
+msgstr ""
+"A CKEditor-szerkesztő CSS-fájljának útvonala. Ezen beállítás változtatásai "
+"csak azután lesznek következetesen alkalmazva, miután az OTOBO gyorsítótára "
+"törlésre került a Maint::Cache::Delete paranccsal!"
+
+#: ../content/index.rst:71
+msgid "Frontend::CKEditorPlugins"
+msgstr "Frontend::CKEditorPlugins"
+
+#: ../content/index.rst:72
+msgid ""
+"List of active CKEditor plugins (only used if "
+"`Frontend::RichText::EnhancedMode` is enabled)."
+msgstr ""
+"Az aktív CKEditor-bővítmények listája (csak akkor van használva, ha a "
+"„Frontend::RichText::EnhancedMode” beállítás engedélyezve van)."
+
+#: ../content/index.rst:77
+msgid "Frontend::EnhancedCKEditorToolbar"
+msgstr "Frontend::EnhancedCKEditorToolbar"
+
+#: ../content/index.rst:78
+msgid ""
+"Controls shown in the enhanced mode CKEditor toolbar. Each array defines a "
+"button group that will be visibly separated in the editor (only used if "
+"`Frontend::RichText::EnhancedMode` is enabled)."
+msgstr ""
+"A bővített módú CKEditor-eszköztáron megjelenített vezérlők. Minden egyes "
+"tömb egy olyan gombcsoportot határoz meg, amely elválasztva lesz "
+"megjelenítve a szerkesztőben (csak akkor van használva, ha a "
+"„Frontend::RichText::EnhancedMode” beállítás engedélyezve van)."
+
+#: ../content/index.rst:81
+msgid "Frontend::RichTextPath"
+msgstr "Frontend::RichTextPath"
+
+#: ../content/index.rst:82
+msgid "Defines the URL rich text editor path."
+msgstr "Meghatározza az URL Rich Text szerkesztő útvonalát."
+
+#: ../content/index.rst:87
+msgid "CustomerFrontend::CKEditorPlugins"
+msgstr "CustomerFrontend::CKEditorPlugins"
+
+#: ../content/index.rst:88
+msgid ""
+"List of active CKEditor plugins (only used if "
+"`CustomerFrontend::RichText::EnhancedMode` is enabled)."
+msgstr ""
+"Az aktív CKEditor-bővítmények listája (csak akkor van használva, ha a "
+"„CustomerFrontend::RichText::EnhancedMode” beállítás engedélyezve van)."
+
+#: ../content/index.rst:93
+msgid "CustomerFrontend::EnhancedCKEditorToolbar"
+msgstr "CustomerFrontend::EnhancedCKEditorToolbar"
+
+#: ../content/index.rst:94
+msgid ""
+"Controls shown in the enhanced mode CKEditor toolbar. Each array defines a "
+"button group that will be visibly separated in the editor (only used if "
+"`CustomerFrontend::RichText::EnhancedMode` is enabled)."
+msgstr ""
+"A bővített módú CKEditor-eszköztáron megjelenített vezérlők. Minden egyes "
+"tömb egy olyan gombcsoportot határoz meg, amely elválasztva lesz "
+"megjelenítve a szerkesztőben (csak akkor van használva, ha a "
+"„CustomerFrontend::RichText::EnhancedMode” beállítás engedélyezve van)."
+
+#: ../content/index.rst:97
+msgid "CustomerFrontend::RichTextEditorStyles"
+msgstr "CustomerFrontend::RichTextEditorStyles"
+
+#: ../content/index.rst:101
+msgid "About"
+msgstr "Névjegy"
+
+#: ../content/index.rst:104
+msgid "Contact"
+msgstr "Kapcsolat"
+
+#: ../content/index.rst:105
+msgid "Rother OSS GmbH"
+msgstr "Rother OSS GmbH"
+
+#: ../content/index.rst:106
+msgid "Email: hello@otobo.io"
+msgstr "E-mail: hello@otobo.io"
+
+#: ../content/index.rst:107
+msgid "Web: https://otobo.io"
+msgstr "Web: https://otobo.io"
+
+#: ../content/index.rst:110
+msgid "Version"
+msgstr "Verzió"
+
+#: ../content/index.rst:111
+msgid ""
+"Author: |doc-vendor| / Version: |doc-version| / Date of release: |doc-"
+"datestamp|"
+msgstr ""
+"Szerző: |doc-vendor| / Verzió: |doc-version| / Kiadás dátuma: |doc-datestamp|"

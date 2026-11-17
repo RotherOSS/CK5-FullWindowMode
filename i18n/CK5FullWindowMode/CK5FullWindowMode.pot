@@ -1,0 +1,28 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: CK5FullWindowMode\n"
+"POT-Creation-Date: 2026-11-17 11:16+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. SysConfig
+msgid "Controls shown in the enhanced mode CKEditor toolbar. Each array defines a button group that will be visibly separated in the editor (only used if `CustomerFrontend::RichText::EnhancedMode` is enabled)."
+msgstr ""
+
+#. SysConfig
+msgid "Controls shown in the enhanced mode CKEditor toolbar. Each array defines a button group that will be visibly separated in the editor (only used if `Frontend::RichText::EnhancedMode` is enabled)."
+msgstr ""
+
+#. SysConfig
+msgid "List of active CKEditor plugins (only used if `CustomerFrontend::RichText::EnhancedMode` is enabled)."
+msgstr ""
+
+#. SysConfig
+msgid "List of active CKEditor plugins (only used if `Frontend::RichText::EnhancedMode` is enabled)."
+msgstr ""
+

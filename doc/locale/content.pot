@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Documentation dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 08:03+0000\n"
+"POT-Creation-Date: 2026-11-17 12:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,7 +128,7 @@ msgid "Frontend::CKEditorPlugins"
 msgstr ""
 
 #: ../content/index.rst:72
-msgid "List of Active CKEditor Plugins. (Only used if `Frontend::RichText::EnhancedMode` is enabled)"
+msgid "List of active CKEditor plugins (only used if `Frontend::RichText::EnhancedMode` is enabled)."
 msgstr ""
 
 #: ../content/index.rst:77
@@ -136,7 +136,7 @@ msgid "Frontend::EnhancedCKEditorToolbar"
 msgstr ""
 
 #: ../content/index.rst:78
-msgid "Controls shown in the Enhanced Mode CKEditor Toolbar. Each Array defines a Button Group that will be visibly seperated in the Editor.(Only used if `Frontend::RichText::EnhancedMode` is enabled)"
+msgid "Controls shown in the enhanced mode CKEditor toolbar. Each array defines a button group that will be visibly separated in the editor (only used if `Frontend::RichText::EnhancedMode` is enabled)."
 msgstr ""
 
 #: ../content/index.rst:81
@@ -152,7 +152,7 @@ msgid "CustomerFrontend::CKEditorPlugins"
 msgstr ""
 
 #: ../content/index.rst:88
-msgid "List of Active CKEditor Plugins. (Only used if `CustomerFrontend::RichText::EnhancedMode` is enabled)"
+msgid "List of active CKEditor plugins (only used if `CustomerFrontend::RichText::EnhancedMode` is enabled)."
 msgstr ""
 
 #: ../content/index.rst:93
@@ -160,7 +160,7 @@ msgid "CustomerFrontend::EnhancedCKEditorToolbar"
 msgstr ""
 
 #: ../content/index.rst:94
-msgid "Controls shown in the Enhanced Mode CKEditor Toolbar. Each Array defines a Button Group that will be visibly seperated in the Editor.(Only used if `CustomerFrontend::RichText::EnhancedMode` is enabled)"
+msgid "Controls shown in the enhanced mode CKEditor toolbar. Each array defines a button group that will be visibly separated in the editor (only used if `CustomerFrontend::RichText::EnhancedMode` is enabled)."
 msgstr ""
 
 #: ../content/index.rst:97

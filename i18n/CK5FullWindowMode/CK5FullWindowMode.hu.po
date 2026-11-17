@@ -1,0 +1,59 @@
+# Hungarian translations for CK5FullWindowMode.
+# Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
+# This file is distributed under the same license as the CK5FullWindowMode package.
+#
+# Balázs Úr <balazs@urbalazs.hu>, 2026.
+msgid ""
+msgstr ""
+"Project-Id-Version: CK5FullWindowMode 11.0.4\n"
+"Report-Msgid-Bugs-To: https://github.com/RotherOSS/CK5-FullWindowMode/"
+"issues\n"
+"POT-Creation-Date: 2026-11-17 10:39+0000\n"
+"PO-Revision-Date: 2026-11-17 11:43+0100\n"
+"Last-Translator: Balázs Úr <balazs@urbalazs.hu>\n"
+"Language-Team: Hungarian <https://translate.otobo.org/projects/otobo-11-0/"
+"addons/ck5fullwindowmode/hu/>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 26.08.1\n"
+
+#. SysConfig
+msgid ""
+"Controls shown in the enhanced mode CKEditor toolbar. Each array defines a "
+"button group that will be visibly separated in the editor (only used if "
+"`Frontend::RichText::EnhancedMode` is enabled)."
+msgstr ""
+"A bővített módú CKEditor-eszköztáron megjelenített vezérlők. Minden egyes "
+"tömb egy olyan gombcsoportot határoz meg, amely elválasztva lesz "
+"megjelenítve a szerkesztőben (csak akkor van használva, ha a "
+"„Frontend::RichText::EnhancedMode” beállítás engedélyezve van)."
+
+#. SysConfig
+msgid ""
+"Controls shown in the enhanced mode CKEditor toolbar. Each array defines a "
+"button group that will be visibly separated in the editor (only used if "
+"`CustomerFrontend::RichText::EnhancedMode` is enabled)."
+msgstr ""
+"A bővített módú CKEditor-eszköztáron megjelenített vezérlők. Minden egyes "
+"tömb egy olyan gombcsoportot határoz meg, amely elválasztva lesz "
+"megjelenítve a szerkesztőben (csak akkor van használva, ha a "
+"„CustomerFrontend::RichText::EnhancedMode” beállítás engedélyezve van)."
+
+#. SysConfig
+msgid ""
+"List of active CKEditor plugins (only used if "
+"`CustomerFrontend::RichText::EnhancedMode` is enabled)."
+msgstr ""
+"Az aktív CKEditor-bővítmények listája (csak akkor van használva, ha a "
+"„CustomerFrontend::RichText::EnhancedMode” beállítás engedélyezve van)."
+
+#. SysConfig
+msgid ""
+"List of active CKEditor plugins (only used if "
+"`Frontend::RichText::EnhancedMode` is enabled)."
+msgstr ""
+"Az aktív CKEditor-bővítmények listája (csak akkor van használva, ha a "
+"„Frontend::RichText::EnhancedMode” beállítás engedélyezve van)."

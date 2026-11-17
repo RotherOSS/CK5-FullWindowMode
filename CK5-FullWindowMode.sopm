@@ -10,11 +10,13 @@
     <Description Lang="de">Fügt eine Fullscreen Ansicht für den Text Editor hinzu.</Description>
     <Description Lang="hu">Teljes képernyős módot ad a szövegszerkesztőhöz.</Description>
     <Filelist>
-        <File Permission="660" Location="var/httpd/htdocs/skins/Agent/default/css/CKEditorCustomStyles.css" />
-        <File Permission="660" Location="var/httpd/htdocs/skins/Customer/default/css/CKEditorCustomStyles.css" />
+        <File Permission="660" Location="Custom/Kernel/Output/HTML/Layout.pm" />
+        <File Permission="660" Location="Kernel/Config/Files/XML/CK5FullWindowMode.xml" />
+        <File Permission="660" Location="Kernel/Language/de_CK5FullWindowMode.pm" />
+        <File Permission="660" Location="Kernel/Language/hu_CK5FullWindowMode.pm" />
         <File Permission="660" Location="var/httpd/htdocs/js/Core.UI.CKEditor5Wrapper.js" />
         <File Permission="660" Location="var/httpd/htdocs/js/Core.UI.RichTextEditor.js" />
-        <File Permission="660" Location="Kernel/Config/Files/XML/CK5FullWindowMode.xml" />
-        <File Permission="660" Location="Custom/Kernel/Output/HTML/Layout.pm" />
+        <File Permission="660" Location="var/httpd/htdocs/skins/Agent/default/css/CKEditorCustomStyles.css" />
+        <File Permission="660" Location="var/httpd/htdocs/skins/Customer/default/css/CKEditorCustomStyles.css" />
     </Filelist>
 </otobo_package>

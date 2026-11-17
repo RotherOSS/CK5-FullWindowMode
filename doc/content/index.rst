@@ -73,13 +73,13 @@ Path to CKEditor editor CSS file. Changes to this setting will only consistently
 
 Frontend::CKEditorPlugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-List of Active CKEditor Plugins. (Only used if `Frontend::RichText::EnhancedMode` is enabled)
+List of active CKEditor plugins (only used if `Frontend::RichText::EnhancedMode` is enabled).
 
 .. _Frontend-EnhancedCKEditorToolbar:
 
 Frontend::EnhancedCKEditorToolbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Controls shown in the Enhanced Mode CKEditor Toolbar. Each Array defines a Button Group that will be visibly seperated in the Editor.(Only used if `Frontend::RichText::EnhancedMode` is enabled)
+Controls shown in the enhanced mode CKEditor toolbar. Each array defines a button group that will be visibly separated in the editor (only used if `Frontend::RichText::EnhancedMode` is enabled).
 
 Frontend::RichTextPath
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -89,13 +89,13 @@ Defines the URL rich text editor path.
 
 CustomerFrontend::CKEditorPlugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-List of Active CKEditor Plugins. (Only used if `CustomerFrontend::RichText::EnhancedMode` is enabled)
+List of active CKEditor plugins (only used if `CustomerFrontend::RichText::EnhancedMode` is enabled).
 
 .. _CustomerFrontend-EnhancedCKEditorToolbar:
 
 CustomerFrontend::EnhancedCKEditorToolbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Controls shown in the Enhanced Mode CKEditor Toolbar. Each Array defines a Button Group that will be visibly seperated in the Editor.(Only used if `CustomerFrontend::RichText::EnhancedMode` is enabled) 
+Controls shown in the enhanced mode CKEditor toolbar. Each array defines a button group that will be visibly separated in the editor (only used if `CustomerFrontend::RichText::EnhancedMode` is enabled).
 
 CustomerFrontend::RichTextEditorStyles
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
